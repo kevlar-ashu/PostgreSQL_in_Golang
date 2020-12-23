@@ -53,8 +53,8 @@ const (
 	host     = "localhost"
 	port     = 5432
 	user     = "postgres"
-	password = "Ashu88742@"
-	dbname   = "postgres_DB"
+	password = "your-password"
+	dbname   = "database-name"
 )
 
 func main() {
@@ -90,12 +90,14 @@ func main() {
 
 }
 
+// GetCars is exported type function
 func GetCars(w http.ResponseWriter, r *http.Request) {
 	var cars []Car
 	db.Find(&cars)
 	json.NewEncoder(w).Encode(&cars)
 }
 
+// GetCar is exported type function
 func GetCar(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var car Car
@@ -103,6 +105,7 @@ func GetCar(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(&car)
 }
 
+// GetDriver is exported type function
 func GetDriver(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var driver Driver
@@ -113,6 +116,7 @@ func GetDriver(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(&driver)
 }
 
+// DeleteCar is exported type function
 func DeleteCar(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var car Car
